@@ -1,12 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Primer sitio de prueba</title>
+    <meta charset="utf-8">
+    <title>Ejemplo de notificaciones</title>
 </head>
 <body>
-  <h1 style="color:blue">Bienvenido peter a tu sitio</h1>
-  
+    <h1>Bienvenido Amigo</h1>
+    <button onclick="notificar();" >Enviar notificación</button>
+    
+    <script>
+        if(Notification.permission !== "granted"){
+            Notification.requestPermission();
+        }
+        
+        function notificar(){
+            if(Notification.permission !== "granted"){
+                Notification.requestPermission();
+            }else{
+                var notificacion = new Notification("Titulo",
+                    {
+                        icon: "https://jonathanmelgoza.com/wp-content/themes/jonathanmelgoza/images/header_menu_rs_btn.png",
+                        body: "Texto de la notificación"
+                    }
+                );
+                
+                notificacion.onclick = function(){
+                    window.open("https://jonathanmelgoza.com/blog/");
+                }
+            }
+        }
+    </script>
 </body>
 </html>
